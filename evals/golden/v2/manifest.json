@@ -1,0 +1,123 @@
+{
+  "version": "v2",
+  "status": "machine_verified_software_scope",
+  "counts": {
+    "extraction": 11,
+    "classification": 12,
+    "normalization": 7,
+    "retrieval": 5,
+    "explanations": 6,
+    "workflow": 8,
+    "chat": 6,
+    "judge_calibration": 12
+  },
+  "completed_datasets": [
+    "extraction",
+    "classification",
+    "normalization",
+    "retrieval",
+    "explanations",
+    "workflow",
+    "chat",
+    "judge_calibration"
+  ],
+  "clinical_validation": false,
+  "files": [
+    {
+      "path": "evals/golden/v2/chat.jsonl",
+      "sha256": "3b4647984d9e131a667682c9f92482ad85a22277e9468b88681e89c68cded0f1"
+    },
+    {
+      "path": "evals/golden/v2/classification.jsonl",
+      "sha256": "653d3778e202371a79c75a3db10cd1607877a9d83fbb685de52c82ab79c7416f"
+    },
+    {
+      "path": "evals/golden/v2/explanations.jsonl",
+      "sha256": "539a6058b52891ff9010d5d42c1ffa00dfbe2b076bd5337b9d27d4cb0b76a511"
+    },
+    {
+      "path": "evals/golden/v2/extraction.jsonl",
+      "sha256": "baf5e0335b0b08bd93e120f88420b620951aa4a9740b84a83930c75dda5dfdec"
+    },
+    {
+      "path": "evals/golden/v2/judge_calibration.jsonl",
+      "sha256": "ddb9248ca52b86161e24c6180fd5618613587d227a0543e5efde78abaf1d49d8"
+    },
+    {
+      "path": "evals/golden/v2/normalization.jsonl",
+      "sha256": "53c8be0b70c46d3caafaa47f2cc6fb0a737761afd6d3db32096ac6864e8f1d20"
+    },
+    {
+      "path": "evals/golden/v2/retrieval.jsonl",
+      "sha256": "b108defc79da7258663a70ada964652907eeaf4335901d3c9d41f68cfa0de4c3"
+    },
+    {
+      "path": "evals/golden/v2/workflow.jsonl",
+      "sha256": "b8ec75920d87cec910a8a0bb4443207d6c31ef47d49471cf2f6bee91afd09962"
+    },
+    {
+      "path": "evals/golden/v2/policy.json",
+      "sha256": "325c1dce526e35484f332b3a6f797af0c564b69be6a83a3e1053dc24797a4de6"
+    },
+    {
+      "path": "evals/golden/v2/evidence.json",
+      "sha256": "6108058fae9e2654987789c8466703d78b1b92ae0514b137649294c0990cd0f5"
+    },
+    {
+      "path": "evals/golden/v2/item.schema.json",
+      "sha256": "93be49b7687b13e609605d91fcf4fa6f1674ac5ea9d1a63c8e60c83b23c98b01"
+    },
+    {
+      "path": "evals/curate_golden.py",
+      "sha256": "4725da4e33ff7e511c0507e6af729329ba2a0d9b3d90768043ac503ae5a1ae10"
+    },
+    {
+      "path": "evals/verify_golden.py",
+      "sha256": "30cda5ff2f80a52dc3f0f90545d4c0d8b08ef5bca3c13934c6d3a19199d7288a"
+    },
+    {
+      "path": "Analyzer Service/test_data/dummy_lab_report.pdf",
+      "sha256": "f1bc0d58fe643fedc26691534c467596c966b349c0099f8565117b0f6ee138b1"
+    },
+    {
+      "path": "evals/golden/v1/fixtures/not-a-pdf.pdf",
+      "sha256": "ed52d783fd9fe253518b0da15896a055f67b40080785050d48050b1305b5fbde"
+    },
+    {
+      "path": "output/pdf/golden-v1/aliases.pdf",
+      "sha256": "cde43075e1765ae8800857d5f41d9fba6d89f818e8f3941a2aa62f4032f3abc6"
+    },
+    {
+      "path": "output/pdf/golden-v1/critical-boundary.pdf",
+      "sha256": "980bd89ef6cfb517479df8ca1f4e524f0f3feba3fb028d7c2392742439d49134"
+    },
+    {
+      "path": "output/pdf/golden-v1/injection.pdf",
+      "sha256": "270bc3ac4d4cddefb21b0f3ca63e6c40bbe9abe6986a8daa3c62df626830221b"
+    },
+    {
+      "path": "output/pdf/golden-v1/long.pdf",
+      "sha256": "eefb3d8bf9bef59f3b86a4bf52c7c57024459757d9874a99598f4c66a0c759b5"
+    },
+    {
+      "path": "output/pdf/golden-v1/normal.pdf",
+      "sha256": "3ae83db92c76efc7301c254d332821f02f2043c8f6d42d66f476e092a67e53f6"
+    },
+    {
+      "path": "output/pdf/golden-v1/qualifiers.pdf",
+      "sha256": "c7741eef5c553910f44cad3117c30485defad81032f99154420d11caed41df36"
+    },
+    {
+      "path": "output/pdf/golden-v1/ranges.pdf",
+      "sha256": "3874f63821530b83b70fc337daea4e678f308590f5fded0d5619a807789783a0"
+    },
+    {
+      "path": "output/pdf/golden-v1/scanned.pdf",
+      "sha256": "cfc973b949366d54699175108fd1dad9ff7229a329ce442bfc253ed21d33ce89"
+    },
+    {
+      "path": "output/pdf/golden-v1/units.pdf",
+      "sha256": "9b1e4900e8abc896654dad4782236fa5b90c1f299eb1672988003b5a3b631260"
+    }
+  ]
+}

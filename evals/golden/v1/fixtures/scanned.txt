@@ -1,0 +1,5 @@
+SYNTHETIC LAB REPORT - SOFTWARE TEST ONLY
+Report date: 2026-10-01
+Test name                   Result        Unit        Reference range
+Hemoglobin                  14.2          g/dL        12 - 16
+Sodium                      139           mmol/L      136 - 145

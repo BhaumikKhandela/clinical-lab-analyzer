@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: auth-service
+  autoconfigure:
+    # Without this, Spring Boot creates a default in-memory "user" account and
+    # prints a generated password at every startup. Nothing here uses it, and it
+    # would become a working credential the moment anyone enabled basic auth.
+    exclude:
+      - org.springframework.boot.security.autoconfigure.UserDetailsServiceAutoConfiguration
+  datasource:
+    # Its own database. Credentials are the one thing in this system that no
+    # other service should be able to read, and sharing a database would make
+    # that a matter of discipline rather than of access.
+    url: jdbc:postgresql://localhost:5432/lab-auth
+    username: postgres
+    password: unlockit
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+
+server:
+  port: 8085
+
+app:
+  # Browser origins allowed to call /api/auth/login. patientService never calls
+  # this service: it only fetches the public key.
+  cors-origins: http://localhost:5173,http://127.0.0.1:5173
+
+  jwt:
+    # Generated on first start and reused after that, so a restart does not
+    # invalidate every token still inside its hour. Mount it as a secret in
+    # anything but local development.
+    key-file: keys/auth-signing-key.jwk
+    # Goes into every token's `iss`, and every verifier checks it.
+    issuer: lab-analyzer-auth
+    # An hour: short enough that a leaked token stops working the same morning,
+    # long enough not to interrupt a session mid-analysis.
+    expiry-seconds: 3600
+
+  auth:
+    # Used once, on an empty user table, to create the first administrator.
+    # With no password set, one is generated and printed to the log at startup.
+    bootstrap-username: ${APP_AUTH_BOOTSTRAP_USERNAME:admin}
+    bootstrap-password: ${APP_AUTH_BOOTSTRAP_PASSWORD:}
+
+    # A fixed second gate on account creation, on top of needing an ADMIN token.
+    # Checked here rather than in the browser: a value compiled into the
+    # frontend bundle is readable by anyone who opens developer tools.
+    #
+    # This default is in the repository and therefore public. Override it with
+    # APP_AUTH_ADMIN_PASSPHRASE anywhere that matters.
+    admin-passphrase: ${APP_AUTH_ADMIN_PASSPHRASE:unlockit}

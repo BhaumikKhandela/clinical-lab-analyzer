@@ -1,0 +1,40 @@
+name: clinical-lab-local
+
+services:
+  patient-db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: lab-analyzer
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${LOCAL_POSTGRES_PASSWORD:?Set LOCAL_POSTGRES_PASSWORD in the local .env}
+    ports:
+      - "127.0.0.1:55432:5432"
+    volumes:
+      - patient-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d lab-analyzer"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+
+  auth-db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: lab-auth
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${LOCAL_POSTGRES_PASSWORD:?Set LOCAL_POSTGRES_PASSWORD in the local .env}
+    ports:
+      - "127.0.0.1:55433:5432"
+    volumes:
+      - auth-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d lab-auth"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+
+volumes:
+  patient-db-data:
+  auth-db-data:

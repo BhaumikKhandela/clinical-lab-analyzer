@@ -1,0 +1,9 @@
+# Local Python launcher artifacts and credentials.
+__pycache__/
+*.py[cod]
+.env
+.env.local
+evals/.venv/
+evals/results/
+.deepeval/
+.deepeval*

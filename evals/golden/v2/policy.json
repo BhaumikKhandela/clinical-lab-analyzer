@@ -1,0 +1,12 @@
+{
+  "id": "synthetic-arithmetic-policy-v2",
+  "applies_to": "Synthetic Assay A only",
+  "normal_low": 10,
+  "normal_high": 20,
+  "critical_low": 5,
+  "critical_high": 25,
+  "normal_bounds_inclusive": true,
+  "critical_bounds_strict": true,
+  "derivation": "critical bounds extend the supplied interval by half its width",
+  "scope": "Explicit mathematical software rule; no patient or medical threshold claim."
+}

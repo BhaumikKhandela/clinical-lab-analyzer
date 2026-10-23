@@ -1,0 +1,6 @@
+{
+  "version": "v2",
+  "manifest": "evals/golden/v2/manifest.json",
+  "scope": "machine_verified_software_correctness",
+  "clinical_validation": false
+}

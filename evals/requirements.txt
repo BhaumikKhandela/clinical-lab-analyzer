@@ -1,0 +1,5 @@
+deepeval==4.3.0
+langfuse==5.0.1
+pypdf>=5
+jsonschema>=4
+python-dotenv>=1

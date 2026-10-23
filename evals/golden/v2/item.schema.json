@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "High-confidence software benchmark v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "input",
+    "expected_output",
+    "metadata"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "input": {
+      "type": "object",
+      "minProperties": 1
+    },
+    "expected_output": {
+      "type": "object",
+      "minProperties": 1
+    },
+    "metadata": {
+      "type": "object",
+      "required": [
+        "scenario_family",
+        "source_group",
+        "split",
+        "synthetic",
+        "label_status",
+        "label_basis",
+        "clinical_review_required",
+        "evaluation_scope"
+      ],
+      "properties": {
+        "scenario_family": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_group": {
+          "type": "string",
+          "minLength": 1
+        },
+        "split": {
+          "enum": [
+            "development",
+            "calibration",
+            "holdout"
+          ]
+        },
+        "synthetic": {
+          "const": true
+        },
+        "label_status": {
+          "enum": [
+            "pending_verification",
+            "machine_verified"
+          ]
+        },
+        "label_basis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "clinical_review_required": {
+          "const": false
+        },
+        "rubric_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewed_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "review_notes": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evaluation_scope": {
+          "const": "software_correctness_only"
+        }
+      },
+      "allOf": []
+    }
+  }
+}

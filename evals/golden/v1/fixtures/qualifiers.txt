@@ -1,0 +1,7 @@
+SYNTHETIC LAB REPORT - SOFTWARE TEST ONLY
+Report date: 2026-10-01
+Test name                   Result        Unit        Reference range
+Urine Protein               Negative      -           Negative
+Urine Blood                 3+            -           Negative
+Assay X                     <5            ng/mL       (not supplied)
+Creatinine                  1,02          mg/dL       0.6 - 1.2

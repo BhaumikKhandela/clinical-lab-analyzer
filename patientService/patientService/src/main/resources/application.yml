@@ -1,0 +1,61 @@
+spring:
+  application:
+    name: identity-service
+  autoconfigure:
+    # Without this, Spring Boot creates a default in-memory "user" account and
+    # prints a generated password at every startup. Nothing here uses it — this
+    # service authenticates by JWT alone and has no form login or basic auth —
+    # so it is noise at best, and a working credential the moment anyone enables
+    # basic auth without noticing.
+    exclude:
+      - org.springframework.boot.security.autoconfigure.UserDetailsServiceAutoConfiguration
+  datasource:
+    url: jdbc:postgresql://localhost:5432/lab-analyzer
+    username: postgres
+    password: unlockit
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+    # The existing database was created by hand and has no Flyway history.
+    # Baselining at 0 lets Flyway adopt it and still run V1/V2, which are
+    # written with IF NOT EXISTS so they are no-ops there but build a fresh
+    # database from scratch.
+    baseline-on-migrate: true
+    baseline-version: 0
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+server:
+  port: 8082
+
+app:
+  # Relative to the process working directory. Override with APP_UPLOAD_DIR.
+  upload-dir: uploads
+
+  # The Python analyzer. Override with APP_ANALYZER_BASE_URL when it runs
+  # elsewhere, or when run.ps1 has moved it off its default port.
+  analyzer-base-url: http://127.0.0.1:8000
+  # A full panel researches every abnormal result before explaining it, so
+  # minutes are normal. Short enough to eventually give up, long enough not to
+  # abandon a run that would have succeeded.
+  analyzer-timeout-seconds: 600
+
+  # The Python email service. It holds the Gmail credential; this service sends
+  # it the report and the analysis with each request.
+  email-service-base-url: http://127.0.0.1:8083
+  email-timeout-seconds: 60
+
+  auth:
+    # The auth service issues every token; this service only verifies them and
+    # holds no signing key, so it cannot mint one. Only the public half is
+    # fetched, and it is cached and refreshed in the background — so the auth
+    # service does not need to be up for this one to start.
+    jwks-uri: ${APP_AUTH_JWKS_URI:http://127.0.0.1:8085/.well-known/jwks.json}
+    # Must match the auth service's app.jwt.issuer, or every token is refused.
+    issuer: ${APP_AUTH_ISSUER:lab-analyzer-auth}

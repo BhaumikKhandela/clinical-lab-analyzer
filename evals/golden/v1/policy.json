@@ -1,0 +1,23 @@
+{
+  "id": "draft-software-policy-v1",
+  "clinical_review_required": true,
+  "source": "Existing reference_ranges.py potassium/glucose entries, transcribed for review",
+  "normal_bounds_inclusive": true,
+  "critical_bounds_strict": true,
+  "potassium": {
+    "unit": "mmol/L",
+    "normal_low": 3.5,
+    "normal_high": 5.1,
+    "critical_low": 2.5,
+    "critical_high": 6.5
+  },
+  "glucose": {
+    "unit": "mg/dL",
+    "normal_low": 70,
+    "normal_high": 99,
+    "critical_low": 40,
+    "critical_high": 400
+  },
+  "warning": "Outside normal band, unless strictly outside critical bounds.",
+  "limitation": "Software policy snapshot, not a universal clinical guideline."
+}

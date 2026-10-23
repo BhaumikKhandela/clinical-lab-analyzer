@@ -1,0 +1,149 @@
+{
+  "version": "v1",
+  "seed": "explicit-no-random-generation",
+  "status": "draft_requires_review",
+  "counts": {
+    "extraction": 11,
+    "classification": 14,
+    "normalization": 6,
+    "retrieval": 5,
+    "explanations": 6,
+    "workflow": 8,
+    "chat": 6,
+    "judge_calibration": 12
+  },
+  "files": [
+    {
+      "path": "Analyzer Service/test_data/dummy_lab_report.pdf",
+      "sha256": "f1bc0d58fe643fedc26691534c467596c966b349c0099f8565117b0f6ee138b1"
+    },
+    {
+      "path": "output/pdf/golden-v1/aliases.pdf",
+      "sha256": "cde43075e1765ae8800857d5f41d9fba6d89f818e8f3941a2aa62f4032f3abc6"
+    },
+    {
+      "path": "output/pdf/golden-v1/critical-boundary.pdf",
+      "sha256": "980bd89ef6cfb517479df8ca1f4e524f0f3feba3fb028d7c2392742439d49134"
+    },
+    {
+      "path": "output/pdf/golden-v1/injection.pdf",
+      "sha256": "270bc3ac4d4cddefb21b0f3ca63e6c40bbe9abe6986a8daa3c62df626830221b"
+    },
+    {
+      "path": "output/pdf/golden-v1/long.pdf",
+      "sha256": "eefb3d8bf9bef59f3b86a4bf52c7c57024459757d9874a99598f4c66a0c759b5"
+    },
+    {
+      "path": "output/pdf/golden-v1/normal.pdf",
+      "sha256": "3ae83db92c76efc7301c254d332821f02f2043c8f6d42d66f476e092a67e53f6"
+    },
+    {
+      "path": "output/pdf/golden-v1/qualifiers.pdf",
+      "sha256": "c7741eef5c553910f44cad3117c30485defad81032f99154420d11caed41df36"
+    },
+    {
+      "path": "output/pdf/golden-v1/ranges.pdf",
+      "sha256": "3874f63821530b83b70fc337daea4e678f308590f5fded0d5619a807789783a0"
+    },
+    {
+      "path": "output/pdf/golden-v1/scanned.pdf",
+      "sha256": "cfc973b949366d54699175108fd1dad9ff7229a329ce442bfc253ed21d33ce89"
+    },
+    {
+      "path": "output/pdf/golden-v1/units.pdf",
+      "sha256": "9b1e4900e8abc896654dad4782236fa5b90c1f299eb1672988003b5a3b631260"
+    },
+    {
+      "path": "evals/golden/v1/fixtures/aliases.txt",
+      "sha256": "f79c938b349cd13578f1b393df3d382f32c31488978aa51b9073989a7e5fdfe0"
+    },
+    {
+      "path": "evals/golden/v1/fixtures/critical-boundary.txt",
+      "sha256": "8b67eb3b55a579812dd599096591e71acf4af5fa1fd00bc8b6810421c97b2bd6"
+    },
+    {
+      "path": "evals/golden/v1/fixtures/injection.txt",
+      "sha256": "dff13f7e3a764fb95d6c49b843ed6f7808ca24fc3a6a735b7bdd519da632ad0a"
+    },
+    {
+      "path": "evals/golden/v1/fixtures/long.txt",
+      "sha256": "3887dc774e1cccf2a725f772d6edf4f98fe7db8f99829174661e89810a63f7a2"
+    },
+    {
+      "path": "evals/golden/v1/fixtures/normal.txt",
+      "sha256": "30e662209c936c8f6ec0c6d51cebe886acd7afebc8c80948a4bd9ff1c4ba908b"
+    },
+    {
+      "path": "evals/golden/v1/fixtures/not-a-pdf.pdf",
+      "sha256": "ed52d783fd9fe253518b0da15896a055f67b40080785050d48050b1305b5fbde"
+    },
+    {
+      "path": "evals/golden/v1/fixtures/qualifiers.txt",
+      "sha256": "9f3b360687f49c329d68d7e51b26540d65316484e5e28bc4042c433036986b46"
+    },
+    {
+      "path": "evals/golden/v1/fixtures/ranges.txt",
+      "sha256": "7c2f36baadf96e31c34fbdf45de240376b28ba47646a44886856032b330c8141"
+    },
+    {
+      "path": "evals/golden/v1/fixtures/scanned.txt",
+      "sha256": "30e662209c936c8f6ec0c6d51cebe886acd7afebc8c80948a4bd9ff1c4ba908b"
+    },
+    {
+      "path": "evals/golden/v1/fixtures/units.txt",
+      "sha256": "611649cae29bab0b91bfcc9c7a26b5af2c1e1748977c27372f488684d212a341"
+    },
+    {
+      "path": "evals/golden/v1/evidence.json",
+      "sha256": "6997a4134d490fd3848bec41afcfe4a25c3e60c252166bef06d42dc93ae25a3f"
+    },
+    {
+      "path": "evals/golden/v1/policy.json",
+      "sha256": "dd1dc94067683d34353f8547f178f9f2a93f9b675f734fdbe5b0ebccf1548477"
+    },
+    {
+      "path": "evals/golden/v1/chat.jsonl",
+      "sha256": "04178abf998bff39f6a141f822d6f021d48b46a6e6305964720de0f26de8d3e2"
+    },
+    {
+      "path": "evals/golden/v1/classification.jsonl",
+      "sha256": "6026f97ad6330c5e6ab465345104d641e4d81914bcd37143175319997b27562f"
+    },
+    {
+      "path": "evals/golden/v1/explanations.jsonl",
+      "sha256": "549463baf0edced9ec4269ead823d22e298ae8fe8149e86c7385db8e3b2ebfdd"
+    },
+    {
+      "path": "evals/golden/v1/extraction.jsonl",
+      "sha256": "7ea827686fe38cb1fb1d7a4571e1534601ff727348f02d12d3eed6c2b34cd3c8"
+    },
+    {
+      "path": "evals/golden/v1/judge_calibration.jsonl",
+      "sha256": "051cd93186ef72f3c348f7e255278f9887addaea15425c651954e9b149a5d71e"
+    },
+    {
+      "path": "evals/golden/v1/normalization.jsonl",
+      "sha256": "607a9a2707fbcc0704840fc5cda68ede320de0ac7c78d7478541a43ab3d5dc46"
+    },
+    {
+      "path": "evals/golden/v1/retrieval.jsonl",
+      "sha256": "391d7548a2646dbfe3990746eabda3645852d2f7abbb59610d798b32d8abe488"
+    },
+    {
+      "path": "evals/golden/v1/workflow.jsonl",
+      "sha256": "6730c9f43296ef97b337f01a7f640cee8f51d54a4e941ebbe4fc698c9099f657"
+    },
+    {
+      "path": "evals/golden/v1/item.schema.json",
+      "sha256": "0f67391b8c23760a538b7e63d8908d8a4644f8c7ffbf423ebba56ba639fcaff9"
+    },
+    {
+      "path": "evals/generate_golden.py",
+      "sha256": "379d5740383a731c6ad1a4530dc5beb8c031f5bef3aade8bfd6451070ac1ab91"
+    },
+    {
+      "path": "evals/validate_golden.py",
+      "sha256": "22cd563ae329bf14495e1dd4b33fefd88d26ac29b18f9fc78a35465a9095be22"
+    }
+  ]
+}

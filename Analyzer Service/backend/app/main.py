@@ -1,0 +1,69 @@
+import logging
+import os
+import asyncio
+from contextlib import asynccontextmanager
+
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from app.config import settings
+from app.mcp_client import MCPToolClient
+from app.middleware import RunLogMiddleware
+from app.routers import chat, health, labs
+from app.observability import get_client, shutdown
+
+# Agent step logging. Set LOG_LEVEL=DEBUG for more detail, WARNING to quieten.
+logging.basicConfig(
+    level=os.environ.get("LOG_LEVEL", "INFO").upper(),
+    format="%(asctime)s  %(levelname)-7s %(name)s  %(message)s",
+    datefmt="%H:%M:%S",
+)
+# These libraries log every outbound HTTP request at INFO, which drowns out
+# the agent's own step logging.
+for noisy in ("httpx", "httpcore", "urllib3", "google_genai", "openai"):
+    logging.getLogger(noisy).setLevel(logging.WARNING)
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    get_client()
+    app.state.mcp_client = MCPToolClient()
+    try:
+        await app.state.mcp_client.start()
+        yield
+    finally:
+        await app.state.mcp_client.stop()
+        await asyncio.to_thread(shutdown)
+
+
+app = FastAPI(title="Results Analyzer", lifespan=lifespan)
+
+# Added first so it sits inside CORS — middleware runs in reverse order of
+# registration, so the run log measures handler time rather than CORS overhead.
+app.add_middleware(RunLogMiddleware)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.CORS_ORIGINS,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(health.router)
+app.include_router(labs.router)
+app.include_router(chat.router)
+
+
+def main() -> None:
+    """Run with: `python -m app.main` from the `backend/` directory (not `backend/app/`) —
+    the `app.` package imports throughout this codebase need `backend/` on sys.path."""
+    import uvicorn
+
+    # PORT lets a launcher move the service when 8000 is taken; the frontend is
+    # told the same value through VITE_API_BASE.
+    uvicorn.run("app.main:app", host="127.0.0.1", port=int(os.environ.get("PORT", "8000")), reload=True)
+
+
+if __name__ == "__main__":
+    main()
